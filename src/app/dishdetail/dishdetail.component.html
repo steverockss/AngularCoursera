@@ -7,6 +7,12 @@
   fxLayoutGap="10px"
   fxLayoutGap.xs="0"
 >
+<div fxFlex="100">
+  <div>
+    <h3>{{dish.name | uppercase}}</h3>
+    <hr>
+  </div>
+</div>
   <div fxFlex="40" *ngIf="dish">
     <mat-card>
       <mat-card-header>
@@ -26,6 +32,7 @@
         <mat-card-actions>
           <button mat-button>Like</button>
           <button mat-button>Share</button>
+          <button mat-button (click)="goBack()">Back</button>
         </mat-card-actions>
       </mat-card-content>
     </mat-card>
