@@ -12,6 +12,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {ReactiveFormsModule} from '@angular/forms'
 //Services
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
@@ -28,6 +31,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { fromEventPattern } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +49,7 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
+    //Material
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -53,8 +58,12 @@ import { LoginComponent } from './login/login.component';
     MatCheckboxModule,
     MatDialogModule,
     MatButtonModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    //
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [DishService, PromotionService, LeaderService],
