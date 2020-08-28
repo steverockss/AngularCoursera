@@ -7,9 +7,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 //Services
 import { DishService } from './services/dish.service';
-import {PromotionService} from './services/promotion.service'
+import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
 //Modules
 import { AppRoutingModule } from './app-routing/app-routing.module';
 //Components
@@ -21,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
     ContactComponent,
     FooterComponent,
     HeaderComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +46,12 @@ import { HeaderComponent } from './header/header.component';
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
+    MatDialogModule,
   ],
-  providers: [DishService, PromotionService],
+  providers: [DishService, PromotionService, LeaderService],
+  entryComponents:[
+      LoginComponent
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
