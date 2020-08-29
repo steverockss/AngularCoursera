@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
-  <div fxFlex>
+  <div fxFlex *ngIf="dishes">
     <div>
       <h3>Menu</h3>
       <hr />
@@ -16,5 +16,8 @@
     </mat-grid-list>
   </mat-list>
 
-  <app-dishdetail></app-dishdetail>
+<div [hidden]="dishes">
+<mat-spinner></mat-spinner> <h4>Loading please wait</h4>
+</div>
+  <!-- <app-dishdetail></app-dishdetail> -->
 </div>

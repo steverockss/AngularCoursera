@@ -57,4 +57,13 @@
       </p>
     </mat-card-content>
   </mat-card>
+  <div [hidden]="dish">
+    <mat-spinner></mat-spinner> <h4>Loading dish ..</h4>
+  </div>
+  <div [hidden]="promotion">
+    <mat-spinner></mat-spinner> <h4>Loading promotion..</h4>
+  </div>
+  <div [hidden]="leader">
+    <mat-spinner></mat-spinner> <h4>Loading leader ..</h4>
+  </div>
 </div>

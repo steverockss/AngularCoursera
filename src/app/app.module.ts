@@ -15,6 +15,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {ReactiveFormsModule} from '@angular/forms'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 //Services
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
@@ -60,6 +61,7 @@ import { fromEventPattern } from 'rxjs';
     MatButtonModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
     //
     AppRoutingModule,
     FormsModule,
