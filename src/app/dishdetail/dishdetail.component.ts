@@ -6,10 +6,17 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/internal/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {visibility} from '../animations/app.animation';
+import {flyInOut, expand} from '../animations/app.animation';
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.css'],
+  animations:[
+    visibility(),
+    flyInOut(),
+    expand()
+  ]
 })
 export class DishdetailComponent implements OnInit {
   commentForm: FormGroup;
@@ -20,10 +27,12 @@ export class DishdetailComponent implements OnInit {
   next: string;
   errMess: string;
   dischCopy: Dish;
+
   formErrors = {
     author: '',
     comment: '',
   };
+  visibility = 'shown';
   validationMessages = {
     author: {
       required: `The author's name is required.`,
@@ -49,13 +58,16 @@ export class DishdetailComponent implements OnInit {
       .subscribe((dishIds) => (this.dishIds = dishIds));
     this.route.params
       .pipe(
-        switchMap((params: Params) => this.dishService.getDish(params['id']))
-      )
+        switchMap((params: Params) =>{
+          this.visibility = 'hidden';return this.dishService.getDish(params['id'])
+        }
+      ))
       .subscribe(
         (dish) => {
           this.dish = dish;
           this.dischCopy = dish;
           this.setPrevNext(dish.id);
+          this.visibility = 'shown'
         },
         (errmess) => (this.errMess = <any>errmess)
       );
