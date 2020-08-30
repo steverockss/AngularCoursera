@@ -37,6 +37,7 @@ import { LoginComponent } from './login/login.component';
 import { fromEventPattern } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { baseUrl } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { baseUrl } from './shared/baseurl';
     FooterComponent,
     HeaderComponent,
     LoginComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
