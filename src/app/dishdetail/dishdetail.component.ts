@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comment';
 import { DishService } from '../services/dish.service';
@@ -35,7 +35,8 @@ export class DishdetailComponent implements OnInit {
     private dishService: DishService,
     private route: ActivatedRoute,
     private location: Location,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject('BaseUrl') private BaseURL
   ) {
     this.createForm();
   }
@@ -84,7 +85,8 @@ export class DishdetailComponent implements OnInit {
   onSubmit(): void {
     this.comment = this.commentForm.value;
     console.log(this.comment);
-    this.comment.date = Date.now().toString();
+
+    this.comment.date = new Date().toISOString();
     this.dish.comments.push(this.comment);
     this.commentForm.reset({
       author: '',
@@ -92,7 +94,6 @@ export class DishdetailComponent implements OnInit {
       rating: 5,
     });
     this.commentForm.reset();
-
   }
 
   onValueChanged(data?: any) {

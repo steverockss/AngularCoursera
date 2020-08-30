@@ -8,19 +8,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {ReactiveFormsModule} from '@angular/forms'
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 //Services
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
+import {ProcessHTTPMsgService} from './services/processHTTPMsg.service';
 //Modules
 import { AppRoutingModule } from './app-routing/app-routing.module';
 //Components
@@ -34,6 +35,9 @@ import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { fromEventPattern } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { baseUrl } from './shared/baseurl';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,12 +72,16 @@ import { fromEventPattern } from 'rxjs';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    HttpClientModule,
   ],
-  providers: [DishService, PromotionService, LeaderService],
-  entryComponents:[
-      LoginComponent
+  providers: [
+    DishService,
+    PromotionService,
+    LeaderService,
+    ProcessHTTPMsgService,
+    { provide: 'BaseUrl', useValue: baseUrl },
   ],
+  entryComponents: [LoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

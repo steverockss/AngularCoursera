@@ -15,7 +15,7 @@
           <h3>{{ dish.name | uppercase }}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="{{ dish.image }}" alt="{{ dish.name }}" />
+      <img mat-card-image src="{{ BaseURL + dish.image }}" alt="{{ dish.name }}" />
       <mat-card-content>
         <p>
           {{ dish.description }}
@@ -42,10 +42,13 @@
         <h4 mat-line>-- {{ comment.author }} {{ comment.date | date }}</h4>
       </mat-list-item>
     </mat-list>
-    <h4>Preview</h4>
-    <p>{{ commentForm.value.comment }}</p>
-    <p >{{ commentForm.value.rating }} Stars</p>
-    <p>-- {{ commentForm.value.author }}</p>
+    <div [hidden]="!commentForm.valid">
+      <h4>Preview</h4>
+      <p>{{ commentForm.value.comment }}</p>
+      <p >{{ commentForm.value.rating }} Stars</p>
+      <p>-- {{ commentForm.value.author }}</p>
+    </div>
+
 
     <div>
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
