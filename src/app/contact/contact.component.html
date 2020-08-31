@@ -35,7 +35,13 @@
       <h4>Map of our Location</h4>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div
+    fxFlex
+    fxFlexOffset="20px"
+    class="form-size"
+    [@expand]
+    [hidden]="isSubmitted"
+  >
     <h3>Send us your feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
     <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
@@ -87,7 +93,7 @@
             required
           />
         </mat-form-field>
-        <mat-error *ngIf="formErrors.email"> {{formErrors.email}} </mat-error>
+        <mat-error *ngIf="formErrors.email"> {{ formErrors.email }} </mat-error>
       </p>
       <table class="form-size">
         <td>
@@ -121,5 +127,20 @@
         Submit
       </button>
     </form>
+  </div>
+  <div [@expand] [hidden]="!isSubmitted || feedbackReturned">
+    <mat-spinner></mat-spinner>
+    <h4>Submiting form</h4>
+  </div>
+  <div [@expand] fxFlex *ngIf="feedbackReturned">
+    <h4>Send us your Feedback</h4>
+    <h4>Your Submission</h4>
+    <p>First Name: {{ feedbackReturned.firstname }}</p>
+    <p>Last Name: {{ feedbackReturned.lastname }}</p>
+    <p>Tel Number {{ feedbackReturned.telnum }}</p>
+    <p>Email: {{ feedbackReturned.email }}</p>
+    <p>Contact you?: {{ feedbackReturned.agree }}</p>
+    <p>How?: {{ feedbackReturned.contacttype }}</p>
+    <p>Feedback: {{ feedbackReturned.message }}</p>
   </div>
 </div>

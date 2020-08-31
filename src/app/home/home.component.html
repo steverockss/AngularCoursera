@@ -67,7 +67,11 @@
   <div [hidden]="promotion">
     <mat-spinner></mat-spinner> <h4>Loading promotion..</h4>
   </div>
-  <div [hidden]="leader">
+  <div [hidden]="leader || leaderErrMess">
     <mat-spinner></mat-spinner> <h4>Loading leader ..</h4>
+  </div>
+  <div fxFlex *ngIf="leaderErrMess">
+    <h2>Error</h2>
+    <h4>{{leaderErrMess}}</h4>
   </div>
 </div>

@@ -21,7 +21,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
-import {ProcessHTTPMsgService} from './services/processHTTPMsg.service';
+import { ProcessHTTPMsgService } from './services/processHTTPMsg.service';
+import { FeedbackService } from './services/feedback.service';
 //Modules
 import { AppRoutingModule } from './app-routing/app-routing.module';
 //Components
@@ -81,6 +82,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     PromotionService,
     LeaderService,
     ProcessHTTPMsgService,
+    FeedbackService,
     { provide: 'BaseUrl', useValue: baseUrl },
   ],
   entryComponents: [LoginComponent],
